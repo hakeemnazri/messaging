@@ -1,9 +1,9 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 
 function setupDatabase(): void {
   const connect = async () => {
     try {
-      await mongoose.connect("mongodb://localhost:27017/messaging-backend");
+      await mongoose.connect("mongodb://user:password@localhost:27017/messaging-backend?authSource=admin");
       console.log("Database connected");
     } catch (error) {
         console.log(`Database connection error: ${error}`);
