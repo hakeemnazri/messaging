@@ -15,6 +15,8 @@ import HTTP_STATUS from "http-status-codes";
 import compression from "compression";
 import "express-async-errors";
 
+const SERVER_PORT = 5000;
+
 export class appServer {
   private app: Application;
 
@@ -57,10 +59,25 @@ export class appServer {
     app.use(json({ limit: "50mb" }));
     app.use(urlencoded({ extended: true, limit: "50mb" }));
   }
-  
+
   private routeMiddleware(app: Application): void {}
+
   private globalErrorHandler(app: Application): void {}
-  private initServer(app: Application): void {}
+
+  private async initServer(app: Application): Promise<void> {
+    try {
+        const httpServer = new http.Server(app);
+        this.startHttpServer(httpServer);
+    } catch (error) {
+        console.log(error);
+    }
+  }
+
   private createSocketIO(httpServer: http.Server): void {}
-  private startHttpServer(httpServer: http.Server): void {}
+
+  private startHttpServer(httpServer: http.Server): void {
+    httpServer.listen(SERVER_PORT, () => {
+        console.log(`Server running on port ${SERVER_PORT}`);
+    })
+  }
 }
