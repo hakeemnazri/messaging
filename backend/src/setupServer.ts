@@ -73,6 +73,7 @@ export class appServer {
         const httpServer = new http.Server(app);
         const socketIO = await this.createSocketIO(httpServer);
         this.startHttpServer(httpServer);
+        this.socketIOConnections(socketIO);
     } catch (error) {
         console.log(error);
     }
@@ -98,4 +99,6 @@ export class appServer {
         console.log(`Server running on port ${SERVER_PORT}`);
     })
   }
+
+  private socketIOConnections(socketIO: Server) : void {}
 }
