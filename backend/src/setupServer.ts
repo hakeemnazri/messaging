@@ -15,7 +15,7 @@ import HTTP_STATUS from "http-status-codes";
 import compression from "compression";
 import "express-async-errors";
 
-const SERVER_PORT = 5000;
+const SERVER_PORT = 4000;
 
 export class appServer {
   private app: Application;
