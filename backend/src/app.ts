@@ -1,19 +1,20 @@
-import express from "express";
-import { appServer } from "./setupServer";
-import initDatabase from "./setupDatabase";
-import { config } from "./config";
+import express from 'express';
+import { appServer } from './setupServer';
+import initDatabase from './setupDatabase';
+import { config } from './config';
 class Application {
-    public init() : void {
-        this.loadConfig();
-        initDatabase();
-        const app = express();
-        const server = new appServer(app);
-        server.start();
-    }
+  public init(): void {
+    this.loadConfig();
+    initDatabase();
+    const app = express();
+    const server = new appServer(app);
+    server.start();
+  }
 
-    private loadConfig() : void{
-        config.validateConfig();
-    }
+  private loadConfig(): void {
+    config.validateConfig();
+    config.cloudinaryConfig();
+  }
 }
 
 const application = new Application();

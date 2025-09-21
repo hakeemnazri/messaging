@@ -1,2 +1,7 @@
 /backend/node_modules/
+/backend/.editorconfig
+/backend/.eslint
 /backend/.env
+/backend/build
+/backend/eslint.config.js
+/backend/.prettierrc.json
